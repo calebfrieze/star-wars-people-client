@@ -1,0 +1,21 @@
+version: '2.4'
+
+services:
+  sw_app_db:
+    image: sw_db:latest
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 9306:3306
+    restart: always
+    environment:
+      MYSQL_USER: sw_app_user
+      MYSQL_PASSWORD: sw_app_user
+  people_api:
+    image: swpeople_api:latest
+    depends_on:
+      - sw_app_db
+    ports:
+      - 9001:9001
+    environment:
+      - SW_APP_DB_HOST=sw_app_db
+      - SW_APP_DB_PORT=3306
