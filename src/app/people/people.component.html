@@ -1,1 +1,20 @@
-<p>people works!</p>
+<div class="people-wrapper">
+  <div class="person-card-wrapper">
+    <div class="person-card-content">
+      <button mat-raised-button color="accent" (click)="onRefreshPeople()">Refresh People</button>
+      <div *ngIf="refreshingPeople">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="!refreshingPeople">
+        <app-person *ngFor="let person of people" [isActive]="person === activePerson" (selectPerson)="onSelect($event)" [person]="person"></app-person>
+      </div>
+    </div>
+  </div>
+
+  <div class="edit-person-wrapper">
+    <div *ngIf="activePerson" class="edit-person-content">
+      <h2>Editing {{activePerson.name}}</h2>
+      <app-person-editor  [person]="activePerson" (savePerson)="onSavePerson($event)"></app-person-editor>
+    </div>
+  </div>
+</div>

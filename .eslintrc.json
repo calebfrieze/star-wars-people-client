@@ -1,0 +1,40 @@
+{
+  "env": {
+      "browser": true,
+      "es6": true
+  },
+  "extends": [
+      "standard",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+  ],
+  "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+  },
+  "plugins": [
+      "prettier",
+      "@typescript-eslint"
+  ],
+  "rules": {
+      "semi": [2, "always"],
+      "quotes": [2, "double"],
+      "import/order": ["error"],
+      "@typescript-eslint/no-explicit-any": [0],
+      "@typescript-eslint/explicit-function-return-type": [0],
+      "generator-star-spacing": [0],
+      "space-before-function-paren": [0],
+      "@typescript-eslint/no-use-before-define": [0],
+      "@typescript-eslint/camelcase": [0],
+      "@typescript-eslint/ban-ts-ignore": [0],
+      "valid-typeof": [0]
+  }
+}

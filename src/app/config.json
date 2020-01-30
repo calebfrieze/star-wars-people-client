@@ -1,0 +1,4 @@
+{
+  "refreshPeopleApiUrl": "http://localhost:9001/refresh-people",
+  "peopleApiUrl": "http://localhost:9001/people"
+}

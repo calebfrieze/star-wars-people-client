@@ -1,0 +1,35 @@
+<form [formGroup]="personEditorForm" (ngSubmit)="onSavePerson()">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" placeholder="Name" formControlName="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Height</mat-label>
+    <input matInput type="text" placeholder="Height" formControlName="height" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Mass</mat-label>
+    <input matInput type="text" placeholder="Mass" formControlName="mass" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Hair Color</mat-label>
+    <input matInput type="text" placeholder="Hair Color" formControlName="hair_color" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Skin Color</mat-label>
+    <input matInput type="text" placeholder="Skin Color" formControlName="skin_color" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Eye Color</mat-label>
+    <input matInput type="text" placeholder="Eye Color" formControlName="eye_color" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Birth Year</mat-label>
+    <input matInput type="text" placeholder="Birth Year" formControlName="birth_year" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <input matInput type="text" placeholder="Gender" formControlName="gender" />
+  </mat-form-field>
+  <button mat-button type="submit">Save Changes</button>
+</form>

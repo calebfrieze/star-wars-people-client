@@ -1,0 +1,24 @@
+.people-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+.person-card-wrapper {
+  width: 250px;
+}
+.person-card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 75px 10px 10px 10px;
+  height: 100%;
+  width: 250px;
+  overflow: scroll;
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.edit-person-wrapper {
+  width: 600px;
+  padding: 30px;
+}

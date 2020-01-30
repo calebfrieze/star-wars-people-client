@@ -1,0 +1,5 @@
+<div class="create-new-person-wrapper">
+  <h2>Create New Person</h2>
+  <app-person-editor [person]="person" (savePerson)="onSavePerson($event)"></app-person-editor>
+  <div *ngIf="personCreated">You created a new person! <button mat-button (click)="clearForm()">Create another person</button></div>
+</div>

@@ -1,0 +1,14 @@
+<mat-card class="person-card" [class.active]="isActive">
+  <mat-card-title>
+    {{person.name}}
+  </mat-card-title>
+  <mat-card-content>
+    <div>Height: {{person.height}}</div>
+    <div>Mass: {{person.mass}}</div>
+    <div>Gender: {{person.gender}}</div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="onSelectPerson()">Edit</button>
+    <button mat-button>Delete</button>
+  </mat-card-actions>
+</mat-card>
