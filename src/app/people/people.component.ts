@@ -30,13 +30,11 @@ export class PeopleComponent implements OnInit {
 
   onSelect(person: WithPersonId<Person>) {
     this.activePerson = person;
-    console.log(person === this.activePerson);
   }
 
   onSavePerson({ personId, personBody }: OnSaveEventPayload) {
     this.peopleService.updatePerson(personId, personBody)
       .subscribe(data => {
-        console.log(data.person);
         this.people = this.people.map(person =>
           Number(person.person_id) === Number(personId) ?
             data.person : person);
@@ -49,6 +47,13 @@ export class PeopleComponent implements OnInit {
     this.peopleService.refreshPeople(PEOPLE_PAGE_LIMIT)
       .subscribe(data => {
         window.location.reload();
+      });
+  }
+
+  onDeletePerson({ person_id }: WithPersonId<Person>) {
+    this.peopleService.deletePerson(person_id)
+      .subscribe(data => {
+        this.people = this.people.filter(person => person.person_id !== person_id);
       });
   }
 }

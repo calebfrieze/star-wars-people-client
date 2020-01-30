@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as querystring from 'querystring';
 import * as config from '../../app/config.json';
 
@@ -31,23 +31,29 @@ interface PersonApiResponse {
 })
 export class PeopleService {
 
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
+
+  httpOptions = { headers: this.headers }
+
   constructor(
     private http: HttpClient
   ) {
     this.http = http;
   }
 
-  createPerson = (person: Person) => this.http.post<PersonApiResponse>(config.peopleApiUrl, person,{ headers: { 'Content-Type': 'application/json' } });
+  createPerson = (person: Person) => this.http.post<PersonApiResponse>(config.peopleApiUrl, person, this.httpOptions);
 
-  getPeople = () => this.http.get<PeopleApiResponse>(config.peopleApiUrl, { headers: { 'Content-Type': 'application/json' } });
+  getPeople = () => this.http.get<PeopleApiResponse>(config.peopleApiUrl, this.httpOptions);
 
   updatePerson = (personId: number, person: Person) =>
-    this.http.put<PersonApiResponse>(`${config.peopleApiUrl}/${personId}`, person, { headers: { 'Content-Type': 'application/json' }})
+    this.http.put<PersonApiResponse>(`${config.peopleApiUrl}/${personId}`, person, this.httpOptions)
 
   refreshPeople = (pageLimit?: number) => {
     const urlParams = querystring.stringify({
       page_limit: pageLimit
     });
-    return this.http.get(`${config.refreshPeopleApiUrl}?${urlParams}`);
+    return this.http.get(`${config.refreshPeopleApiUrl}?${urlParams}`, this.httpOptions);
   }
+
+  deletePerson = (personId: number) => this.http.delete(`${config.peopleApiUrl}/${personId}`)
 }

@@ -3,5 +3,8 @@
   position: relative;
 }
 .mat-toolbar-row {
-  justify-content: flex-end;
+  justify-content: space-between;
+  img {
+    height: 50px;
+  }
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Person } from '../people.service';
+import { Person, WithPersonId } from '../people.service';
 
 @Component({
   selector: 'app-person',
@@ -7,11 +7,16 @@ import { Person } from '../people.service';
   styleUrls: ['./person.component.scss']
 })
 export class PersonComponent {
-  @Input() person: Person;
+  @Input() person: WithPersonId<Person>;
   @Input() isActive: boolean;
-  @Output() selectPerson: EventEmitter<Person> = new EventEmitter<Person>();
+  @Output() selectPerson: EventEmitter<Person> = new EventEmitter<WithPersonId<Person>>();
+  @Output() deletePerson: EventEmitter<Person> = new EventEmitter<WithPersonId<Person>>()
 
   onSelectPerson() {
     this.selectPerson.emit(this.person);
+  }
+
+  onDeletePerson() {
+    this.deletePerson.emit(this.person);
   }
 }

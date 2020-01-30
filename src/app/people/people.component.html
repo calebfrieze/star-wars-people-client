@@ -6,7 +6,11 @@
         <mat-spinner></mat-spinner>
       </div>
       <div *ngIf="!refreshingPeople">
-        <app-person *ngFor="let person of people" [isActive]="person === activePerson" (selectPerson)="onSelect($event)" [person]="person"></app-person>
+        <app-person *ngFor="let person of people" 
+          [isActive]="person === activePerson"
+          (selectPerson)="onSelect($event)" 
+          [person]="person"
+          (deletePerson)="onDeletePerson($event)"></app-person>
       </div>
     </div>
   </div>
